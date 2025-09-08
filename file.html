@@ -1,0 +1,1989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Faheem - Salesforce Developer Portfolio</title>
+    <meta name="description" content="Junior Salesforce Developer specializing in Sales Cloud and Marketing Cloud. Building expertise in Apex, Lightning Web Components, and email marketing automation.">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        :root {
+            /* Professional Color Scheme */
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #3b82f6;
+            --secondary: #64748b;
+            --secondary-dark: #475569;
+            --accent: #059669;
+            --accent-light: #10b981;
+            --warning: #f59e0b;
+            --success: #059669;
+            --danger: #dc2626;
+            --purple: #7c3aed;
+            --indigo: #4f46e5;
+            --pink: #ec4899;
+            --teal: #0d9488;
+            
+            /* Neutral Colors */
+            --white: #ffffff;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+            
+            /* Background */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-dark: #0f172a;
+            --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            
+            /* Text Colors */
+            --text-primary: #0f172a;
+            --text-secondary: #64748b;
+            --text-light: #94a3b8;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Background Patterns */
+        .bg-pattern {
+            position: relative;
+        }
+
+        .bg-pattern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(37, 99, 235, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(5, 150, 105, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .bg-dots {
+            background-image: radial-gradient(circle, var(--gray-300) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .bg-waves {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e2e8f0' fill-opacity='0.3'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Layout */
+        .section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section-dark {
+            background: var(--bg-dark);
+            color: var(--white);
+        }
+
+        .section-light {
+            background: var(--bg-secondary);
+        }
+
+        .section-gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--purple) 100%);
+            color: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Typography */
+        .heading-1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .heading-2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .heading-3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .heading-4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .text-primary { color: var(--primary); }
+        .text-secondary { color: var(--text-secondary); }
+        .text-light { color: var(--text-light); }
+        .text-white { color: var(--white); }
+        .text-center { text-align: center; }
+        .text-gradient {
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Grid System */
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+        .grid-auto { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+
+        /* Cards */
+        .card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--gray-200);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-dark {
+            background: var(--gray-800);
+            border-color: var(--gray-700);
+            color: var(--white);
+        }
+
+        .card-gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--purple) 100%);
+            color: var(--white);
+            border: none;
+        }
+
+        .card-bordered {
+            border: 2px solid var(--primary);
+            background: var(--white);
+        }
+
+        .card-feature {
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .card-testimonial {
+            background: var(--gray-50);
+            border-left: 4px solid var(--primary);
+            font-style: italic;
+        }
+
+        .card-project {
+            position: relative;
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .card-project:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .card-skill {
+            background: linear-gradient(135deg, var(--gray-50) 0%, var(--white) 100%);
+            border: 1px solid var(--gray-200);
+            transition: all 0.3s ease;
+        }
+
+        .card-skill:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Card Overlays */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--purple));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--gray-600);
+            color: var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gray-700);
+        }
+
+        .btn-gradient {
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            color: var(--white);
+        }
+
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            z-index: 100;
+            background: var(--white);
+            border-radius: 50px;
+            padding: 1rem;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-200);
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gray-300);
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-dot:last-child {
+            margin-bottom: 0;
+        }
+
+        .nav-dot.active {
+            background: var(--primary);
+            transform: scale(1.2);
+        }
+
+        .nav-dot::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active::after {
+            opacity: 1;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+        }
+
+        /* Hero Image - Fixed Styling */
+        .hero-image-container {
+            position: relative;
+            display: inline-block;
+            margin: 0 auto;
+        }
+
+        .hero-image {
+            width: 500px;
+            border-radius: 24px;
+            object-fit: cover;
+            object-position: center;
+            box-shadow: var(--shadow-xl);
+            border: 4px solid var(--white);
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .hero-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-status {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 20px;
+            height: 20px;
+            background: var(--success);
+            border: 3px solid var(--white);
+            border-radius: 50%;
+            animation: statusPulse 2s infinite;
+        }
+
+        @keyframes statusPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Icons */
+        .icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .icon:hover {
+            transform: scale(1.1);
+        }
+
+        .icon-secondary { background: var(--secondary); }
+        .icon-accent { background: var(--accent); }
+        .icon-warning { background: var(--warning); }
+        .icon-purple { background: var(--purple); }
+        .icon-indigo { background: var(--indigo); }
+        .icon-pink { background: var(--pink); }
+        .icon-teal { background: var(--teal); }
+
+        /* Badge */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .badge-primary { background: var(--primary); }
+        .badge-secondary { background: var(--secondary); }
+        .badge-warning { background: var(--warning); }
+
+        /* Progress Bars */
+        .progress {
+            background: var(--gray-200);
+            border-radius: 50px;
+            height: 10px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 50px;
+            transition: width 2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .progress-accent { background: var(--accent); }
+        .progress-warning { background: var(--warning); }
+        .progress-secondary { background: var(--secondary); }
+        .progress-purple { background: var(--purple); }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 1rem;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--primary), var(--purple));
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.2rem;
+            top: 0.5rem;
+            width: 16px;
+            height: 16px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 4px solid var(--white);
+            box-shadow: var(--shadow);
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid var(--gray-300);
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Stats */
+        .stat {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Widgets */
+        .widget {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--gray-200);
+            transition: all 0.3s ease;
+        }
+
+        .widget:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .widget-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .widget-title {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .widget-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Project Cards */
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--white);
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .project-tag {
+            background: var(--gray-100);
+            color: var(--text-secondary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+        }
+
+        /* Testimonials */
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-right: 1rem;
+        }
+
+        .testimonial-content {
+            flex: 1;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Skills Grid */
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-name {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .skill-percentage {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        /* Contact Info */
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--gray-50);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .contact-item:hover .contact-icon {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            position: relative;
+            height: 300px;
+            background: var(--white);
+            border-radius: 16px;
+            padding: 1rem;
+            box-shadow: var(--shadow);
+            width: 400px;
+        }
+
+        /* Special Sections */
+        .hero-stats {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--purple) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            color: var(--white);
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='3'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        /* Floating Elements */
+        .floating-widget {
+            position: absolute;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-200);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating-widget-1 {
+            top: 20%;
+            right: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-widget-2 {
+            bottom: 30%;
+            left: 5%;
+            animation-delay: 2s;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .grid-2, .grid-3, .grid-4 {
+                grid-template-columns: 1fr;
+            }
+            .heading-1 { font-size: 2.5rem; }
+            .heading-2 { font-size: 2rem; }
+            .floating-widget { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            .section { padding: 60px 0; }
+            .container { padding: 0 1rem; }
+            .hero-image { width: 380px;}
+            .nav { top: 1rem; right: 1rem; }
+            .card { padding: 1.5rem; }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.6s ease;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Utility Classes */
+        .mb-4 { margin-bottom: 2rem; }
+        .mb-6 { margin-bottom: 3rem; }
+        .mt-4 { margin-top: 2rem; }
+        .flex { display: flex; }
+        .items-center { align-items: center; }
+        .justify-between { justify-content: space-between; }
+        .gap-4 { gap: 1rem; }
+        .gap-6 { gap: 1.5rem; }
+
+        /* Feature List */
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .feature-list li:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .feature-list li i {
+            color: var(--accent);
+            margin-right: 0.75rem;
+            width: 16px;
+        }
+
+        /* Notification */
+        .notification {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .notification-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+        }
+
+        .notification-success { background: var(--success); }
+        .notification-warning { background: var(--warning); }
+        .notification-info { background: var(--primary); }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-dot active" onclick="scrollToSection('hero')"></div>
+        <div class="nav-dot" onclick="scrollToSection('about')"></div>
+        <div class="nav-dot" onclick="scrollToSection('skills')"></div>
+        <div class="nav-dot" onclick="scrollToSection('projects')"></div>
+        <div class="nav-dot" onclick="scrollToSection('marketing-cloud')"></div>
+        <div class="nav-dot" onclick="scrollToSection('testimonials')"></div>
+        <div class="nav-dot" onclick="scrollToSection('experience')"></div>
+        <div class="nav-dot" onclick="scrollToSection('education')"></div>
+        <div class="nav-dot" onclick="scrollToSection('contact')"></div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="section bg-pattern">
+        <div class="container">
+            <div class="grid grid-2" style="align-items: center; gap: 4rem;">
+                <div class="fade-in text-center">
+                    <div class="hero-image-container">
+                        <img src="faheem.jpeg" alt="Muhammad Faheem - Salesforce Developer" class="hero-image">
+                        <div class="hero-status" title="Available for work"></div>
+                    </div>
+                    <div class="badge badge-primary mt-4">
+                        <i class="fas fa-code"></i>
+                        Junior Salesforce Developer
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <h1 class="heading-1">
+                        Muhammad <span class="text-gradient">Faheem</span>
+                    </h1>
+                    <h2 style="font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 2rem; font-weight: 500;">
+                        Junior Salesforce Developer | Sales Cloud & Marketing Cloud
+                    </h2>
+                    <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.8;">
+                        Passionate junior Salesforce developer with 1.5+ years of experience in Sales Cloud and Marketing Cloud. Eager to learn and contribute to meaningful business solutions through effective CRM development and email marketing automation.
+                    </p>
+
+                    <!-- Quick Stats Widgets -->
+                    <div class="grid grid-2 mb-4">
+                        <div class="widget">
+                            <div class="widget-header">
+                                <span class="widget-title">Experience</span>
+                                <i class="fas fa-calendar-alt" style="color: var(--primary);"></i>
+                            </div>
+                            <div class="widget-value">1.5+</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">Years</div>
+                        </div>
+                        <div class="widget">
+                            <div class="widget-header">
+                                <span class="widget-title">Learning Projects</span>
+                                <i class="fas fa-project-diagram" style="color: var(--accent);"></i>
+                            </div>
+                            <div class="widget-value">8</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">Completed</div>
+                        </div>
+                    </div>
+
+                    <div class="hero-stats">
+                        <div class="grid grid-3 text-center">
+                            <div>
+                                <div class="stat-number" style="color: var(--white); font-size: 2rem;">1</div>
+                                <div style="color: rgba(255,255,255,0.8);">Certification</div>
+                            </div>
+                            <div>
+                                <div class="stat-number" style="color: var(--white); font-size: 2rem;">5</div>
+                                <div style="color: rgba(255,255,255,0.8);">Email Campaigns</div>
+                            </div>
+                            <div>
+                                <div class="stat-number" style="color: var(--white); font-size: 2rem;">10</div>
+                                <div style="color: rgba(255,255,255,0.8);">Reports</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;">
+                        <a href="#contact" class="btn btn-gradient">
+                            <i class="fas fa-envelope"></i>
+                            Get In Touch
+                        </a>
+                        <a href="https://www.linkedin.com/in/muhammad-faheem-751220211" target="_blank" class="btn btn-outline">
+                            <i class="fab fa-linkedin"></i>
+                            LinkedIn Profile
+                        </a>
+                        <a href="#projects" class="btn btn-secondary">
+                            <i class="fas fa-folder-open"></i>
+                            View Projects
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Widgets -->
+        <div class="floating-widget floating-widget-1">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <div style="width: 8px; height: 8px; background: var(--success); border-radius: 50%;"></div>
+                <span style="font-size: 0.875rem; color: var(--text-secondary);">Available for opportunities</span>
+            </div>
+        </div>
+        <div class="floating-widget floating-widget-2">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <i class="fas fa-graduation-cap" style="color: var(--primary);"></i>
+                <span style="font-size: 0.875rem; color: var(--text-secondary);">Continuous learner</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section section-light bg-waves">
+        <div class="container">
+            <div class="grid grid-2" style="gap: 4rem;">
+                <div class="slide-in-left">
+                    <h2 class="heading-2" style="text-align: left;">About Me</h2>
+                    <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.8;">
+                        I'm a junior Salesforce developer with 1.5+ years of hands-on experience in Sales Cloud and Marketing Cloud. My journey in Salesforce began with basic administration and has evolved into development with Apex, Lightning Web Components, and email marketing automation.
+                    </p>
+
+                    <!-- Key Focus Areas -->
+                    <div class="card card-bordered mb-4">
+                        <h3 class="heading-3 text-primary">Current Focus</h3>
+                        <div class="grid grid-2 gap-4">
+                            <div style="text-align: center;">
+                                <div class="widget-value" style="color: var(--primary);">Sales Cloud</div>
+                                <div style="color: var(--text-secondary);">CRM Development</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div class="widget-value" style="color: var(--accent);">Marketing Cloud</div>
+                                <div style="color: var(--text-secondary);">Email Automation</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Learning Journey -->
+                    <div class="grid grid-2 gap-4">
+                        <div class="notification">
+                            <div class="notification-icon notification-success">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600;">Salesforce Administrator</div>
+                                <div style="font-size: 0.875rem; color: var(--text-secondary);">Certified & Active</div>
+                            </div>
+                        </div>
+                        <div class="notification">
+                            <div class="notification-icon notification-info">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600;">Platform Developer I</div>
+                                <div style="font-size: 0.875rem; color: var(--text-secondary);">Currently Pursuing</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide-in-right">
+                    <div class="grid grid-2 gap-4">
+                        <div class="card card-skill">
+                            <div class="icon icon-primary">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3 class="heading-4">Sales Cloud</h3>
+                            <p class="text-secondary">
+                                Building custom reports, dashboards, and automating sales processes with workflows and validation rules.
+                            </p>
+                        </div>
+                        <div class="card card-skill">
+                            <div class="icon icon-accent">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3 class="heading-4">Marketing Cloud</h3>
+                            <p class="text-secondary">
+                                Creating email campaigns, basic Journey Builder automation, and managing subscriber data.
+                            </p>
+                        </div>
+                        <div class="card card-skill">
+                            <div class="icon icon-purple">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3 class="heading-4">Apex Development</h3>
+                            <p class="text-secondary">
+                                Learning Apex fundamentals, basic triggers, and classes for simple business logic implementation.
+                            </p>
+                        </div>
+                        <div class="card card-skill">
+                            <div class="icon icon-warning">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h3 class="heading-4">Lightning Platform</h3>
+                            <p class="text-secondary">
+                                Developing basic Lightning Web Components and understanding the Lightning framework.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card mt-4">
+                        <h3 class="heading-3 text-center mb-4">Learning Progress</h3>
+                        <div class="chart-container">
+                            <canvas id="learningChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="heading-2">Technical Skills</h2>
+            <div class="grid grid-2" style="align-items: start; gap: 4rem;">
+                <div class="fade-in">
+                    <h3 class="heading-3 text-primary">Salesforce Sales Cloud</h3>
+                    
+                    <div class="card card-skill mb-4">
+                        <div class="skill-item">
+                            <span class="skill-name">Administration & Configuration</span>
+                            <span class="skill-percentage">75%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 75%;"></div>
+                        </div>
+                        <div style="margin-top: 1rem;">
+                            <div class="badge badge-primary" style="margin-right: 0.5rem;">Custom Objects</div>
+                            <div class="badge badge-secondary" style="margin-right: 0.5rem;">Workflows</div>
+                            <div class="badge badge-warning">Validation Rules</div>
+                        </div>
+                    </div>
+
+                    <div class="card card-skill mb-4">
+                        <div class="skill-item">
+                            <span class="skill-name">Apex Development (Basic)</span>
+                            <span class="skill-percentage">45%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar progress-accent" style="width: 45%;"></div>
+                        </div>
+                        <div style="margin-top: 1rem;">
+                            <div class="badge badge-primary" style="margin-right: 0.5rem;">Basic Triggers</div>
+                            <div class="badge badge-secondary" style="margin-right: 0.5rem;">SOQL</div>
+                            <div class="badge badge-warning">Classes</div>
+                        </div>
+                    </div>
+
+                    <div class="card card-skill mb-4">
+                        <div class="skill-item">
+                            <span class="skill-name">Reports & Dashboards</span>
+                            <span class="skill-percentage">70%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar progress-purple" style="width: 70%;"></div>
+                        </div>
+                        <div style="margin-top: 1rem;">
+                            <div class="badge badge-primary" style="margin-right: 0.5rem;">Custom Reports</div>
+                            <div class="badge badge-secondary" style="margin-right: 0.5rem;">Dashboards</div>
+                            <div class="badge badge-warning">Analytics</div>
+                        </div>
+                    </div>
+
+                    <div class="card card-skill">
+                        <div class="skill-item">
+                            <span class="skill-name">Lightning Web Components (Learning)</span>
+                            <span class="skill-percentage">35%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar progress-warning" style="width: 35%;"></div>
+                        </div>
+                        <div style="margin-top: 1rem;">
+                            <div class="badge badge-primary" style="margin-right: 0.5rem;">JavaScript</div>
+                            <div class="badge badge-secondary" style="margin-right: 0.5rem;">HTML/CSS</div>
+                            <div class="badge badge-warning">Lightning Platform</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide-in-right">
+                    <h3 class="heading-3 text-accent">Salesforce Marketing Cloud</h3>
+                    
+                    <div class="card card-skill mb-4">
+                        <div class="skill-item">
+                            <span class="skill-name">Email Studio & Campaigns</span>
+                            <span class="skill-percentage">65%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar progress-accent" style="width: 65%;"></div>
+                        </div>
+                        <div style="margin-top: 1rem;">
+                            <div class="badge badge-primary" style="margin-right: 0.5rem;">Email Creation</div>
+                            <div class="badge badge-secondary" style="margin-right: 0.5rem;">Content Builder</div>
+                            <div class="badge badge-warning">A/B Testing</div>
+                        </div>
+                    </div>
+
+                    <div class="card card-skill mb-4">
+                        <div class="skill-item">
+                            <span class="skill-name">Journey Builder (Basic)</span>
+                            <span class="skill-percentage">50%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 50%;"></div>
+                        </div>
+                        <div style="margin-top: 1rem;">
+                            <div class="badge badge-primary" style="margin-right: 0.5rem;">Basic Journeys</div>
+                            <div class="badge badge-secondary" style="margin-right: 0.5rem;">Triggers</div>
+                            <div class="badge badge-warning">Decision Splits</div>
+                        </div>
+                    </div>
+
+                    <div class="card card-skill mb-4">
+                        <div class="skill-item">
+                            <span class="skill-name">Data Extensions & Import</span>
+                            <span class="skill-percentage">60%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar progress-secondary" style="width: 60%;"></div>
+                        </div>
+                        <div style="margin-top: 1rem;">
+                            <div class="badge badge-primary" style="margin-right: 0.5rem;">Data Extensions</div>
+                            <div class="badge badge-secondary" style="margin-right: 0.5rem;">Import Activities</div>
+                            <div class="badge badge-warning">Data Management</div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="heading-3 text-center mb-4">Skills Overview</h3>
+                        <div class="chart-container">
+                            <canvas id="skillsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section section-light bg-dots">
+        <div class="container">
+            <h2 class="heading-2">Learning Projects</h2>
+            <p class="text-center text-secondary mb-6" style="max-width: 800px; margin-left: auto; margin-right: auto;">
+                Here are some projects I've worked on to build my skills in Salesforce Sales Cloud and Marketing Cloud.
+            </p>
+
+            <div class="grid grid-3">
+                <div class="card-project fade-in">
+                    <div class="project-image">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <h3 class="heading-4">Sales Reporting Dashboard</h3>
+                        <p class="text-secondary mb-4">
+                            Created a comprehensive sales dashboard with custom reports showing lead conversion rates, opportunity pipeline, and team performance metrics.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Sales Cloud</span>
+                            <span class="project-tag">Reports</span>
+                            <span class="project-tag">Dashboards</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-project fade-in">
+                    <div class="project-image" style="background: linear-gradient(135deg, var(--accent), var(--teal));">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <h3 class="heading-4">Welcome Email Campaign</h3>
+                        <p class="text-secondary mb-4">
+                            Built an automated welcome email series using Email Studio with personalized content and basic Journey Builder automation.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Marketing Cloud</span>
+                            <span class="project-tag">Email Studio</span>
+                            <span class="project-tag">Journey Builder</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-project fade-in">
+                    <div class="project-image" style="background: linear-gradient(135deg, var(--warning), var(--pink));">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <h3 class="heading-4">Lead Qualification Automation</h3>
+                        <p class="text-secondary mb-4">
+                            Implemented basic workflow rules and validation rules to automate lead scoring and assignment based on company size and industry.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Sales Cloud</span>
+                            <span class="project-tag">Workflow Rules</span>
+                            <span class="project-tag">Validation Rules</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-project fade-in">
+                    <div class="project-image" style="background: linear-gradient(135deg, var(--purple), var(--indigo));">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <h3 class="heading-4">Basic Apex Trigger</h3>
+                        <p class="text-secondary mb-4">
+                            Developed my first Apex trigger to automatically update account fields based on related opportunity changes, with proper error handling.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Apex</span>
+                            <span class="project-tag">Triggers</span>
+                            <span class="project-tag">SOQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-project fade-in">
+                    <div class="project-image" style="background: linear-gradient(135deg, var(--teal), var(--accent));">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <h3 class="heading-4">Contact Segmentation</h3>
+                        <p class="text-secondary mb-4">
+                            Created data extensions and segmentation rules in Marketing Cloud to organize contacts by engagement level and preferences.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Marketing Cloud</span>
+                            <span class="project-tag">Data Extensions</span>
+                            <span class="project-tag">Segmentation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-project fade-in">
+                    <div class="project-image" style="background: linear-gradient(135deg, var(--danger), var(--warning));">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <h3 class="heading-4">Simple Lightning Component</h3>
+                        <p class="text-secondary mb-4">
+                            Built a basic Lightning Web Component for displaying related records with simple filtering functionality as a learning exercise.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">LWC</span>
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">Lightning Platform</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marketing Cloud Section -->
+    <section id="marketing-cloud" class="section section-gradient">
+        <div class="container">
+            <h2 class="heading-2 text-white">Marketing Cloud Experience</h2>
+            <div class="grid grid-2">
+                <div class="card card-dark fade-in">
+                    <h3 class="heading-3 text-accent">Email Studio Skills</h3>
+                    <p style="color: var(--gray-300); margin-bottom: 1.5rem;">
+                        Learning email marketing best practices through hands-on campaign creation and basic automation setup.
+                    </p>
+                    
+                    <!-- Progress Indicators -->
+                    <div class="mb-4">
+                        <div class="skill-item">
+                            <span style="color: var(--gray-300);">Email Campaign Setup</span>
+                            <span style="color: var(--accent);">65%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar progress-accent" style="width: 65%;"></div>
+                        </div>
+                    </div>
+
+                    <ul class="feature-list" style="color: var(--gray-300);">
+                        <li><i class="fas fa-check"></i>HTML Email Creation</li>
+                        <li><i class="fas fa-check"></i>Content Builder Usage</li>
+                        <li><i class="fas fa-check"></i>Basic Personalization</li>
+                        <li><i class="fas fa-check"></i>Send Classifications</li>
+                    </ul>
+                </div>
+
+                <div class="card card-dark fade-in">
+                    <h3 class="heading-3 text-accent">Automation Learning</h3>
+                    <p style="color: var(--gray-300); margin-bottom: 1.5rem;">
+                        Building foundational skills in Journey Builder and basic marketing automation concepts.
+                    </p>
+
+                    <!-- Progress Indicators -->
+                    <div class="mb-4">
+                        <div class="skill-item">
+                            <span style="color: var(--gray-300);">Journey Builder Basics</span>
+                            <span style="color: var(--primary);">50%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 50%;"></div>
+                        </div>
+                    </div>
+
+                    <ul class="feature-list" style="color: var(--gray-300);">
+                        <li><i class="fas fa-check"></i>Simple Journey Creation</li>
+                        <li><i class="fas fa-check"></i>Email Activities</li>
+                        <li><i class="fas fa-check"></i>Decision Splits</li>
+                        <li><i class="fas fa-check"></i>Wait Activities</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Marketing Cloud Stats -->
+            <div class="grid grid-4 mt-6">
+                <div class="widget" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">
+                    <div class="widget-header">
+                        <span class="widget-title" style="color: var(--white);">Email Campaigns</span>
+                        <i class="fas fa-envelope" style="color: var(--accent);"></i>
+                    </div>
+                    <div class="widget-value" style="color: var(--white);">5</div>
+                    <div style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">Created & Sent</div>
+                </div>
+                <div class="widget" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">
+                    <div class="widget-header">
+                        <span class="widget-title" style="color: var(--white);">Data Extensions</span>
+                        <i class="fas fa-database" style="color: var(--primary);"></i>
+                    </div>
+                    <div class="widget-value" style="color: var(--white);">8</div>
+                    <div style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">Configured</div>
+                </div>
+                <div class="widget" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">
+                    <div class="widget-header">
+                        <span class="widget-title" style="color: var(--white);">Journeys</span>
+                        <i class="fas fa-route" style="color: var(--warning);"></i>
+                    </div>
+                    <div class="widget-value" style="color: var(--white);">3</div>
+                    <div style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">Basic Automation</div>
+                </div>
+                <div class="widget" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">
+                    <div class="widget-header">
+                        <span class="widget-title" style="color: var(--white);">Learning Hours</span>
+                        <i class="fas fa-clock" style="color: var(--teal);"></i>
+                    </div>
+                    <div class="widget-value" style="color: var(--white);">120+</div>
+                    <div style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">Training Completed</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section section-dark">
+        <div class="container">
+            <h2 class="heading-2 text-white">What Colleagues Say</h2>
+            <div class="grid grid-2">
+                <div class="card card-testimonial fade-in">
+                    <div class="flex">
+                        <div class="testimonial-avatar">AS</div>
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">
+                                "Muhammad is eager to learn and shows great potential in Salesforce development. His dedication to understanding both Sales Cloud and Marketing Cloud is commendable."
+                            </p>
+                            <div class="testimonial-author">Ahmed Shah</div>
+                            <div class="text-secondary" style="font-size: 0.9rem;">Senior Salesforce Administrator</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-testimonial fade-in">
+                    <div class="flex">
+                        <div class="testimonial-avatar" style="background: var(--accent);">SM</div>
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">
+                                "It's refreshing to work with someone so passionate about learning. Muhammad's attention to detail in email campaign setup shows real promise."
+                            </p>
+                            <div class="testimonial-author">Sarah Miller</div>
+                            <div class="text-secondary" style="font-size: 0.9rem;">Marketing Operations Specialist</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-testimonial fade-in">
+                    <div class="flex">
+                        <div class="testimonial-avatar" style="background: var(--warning);">RK</div>
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">
+                                "Muhammad approaches challenges with curiosity and persistence. His willingness to learn and improve makes him a valuable junior team member."
+                            </p>
+                            <div class="testimonial-author">Rashid Khan</div>
+                            <div class="text-secondary" style="font-size: 0.9rem;">Salesforce Consultant</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-testimonial fade-in">
+                    <div class="flex">
+                        <div class="testimonial-avatar" style="background: var(--purple);">ZA</div>
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">
+                                "Working with Muhammad on our CRM project was a positive experience. He asks good questions and follows best practices in his development approach."
+                            </p>
+                            <div class="testimonial-author">Zara Ahmed</div>
+                            <div class="text-secondary" style="font-size: 0.9rem;">Business Analyst</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="heading-2">Professional Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="card">
+                        <h3 class="heading-3 text-primary">Junior Salesforce Developer</h3>
+                        <p style="color: var(--gray-600); margin-bottom: 1rem; font-weight: 500;">March 2023 - Present | 1.5+ Years</p>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                            Currently working as a junior developer focusing on Sales Cloud customizations and Marketing Cloud email campaigns. Learning development best practices while contributing to team projects and building practical experience.
+                        </p>
+                        
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                            <div class="badge badge-primary">Sales Cloud</div>
+                            <div class="badge badge-secondary">Marketing Cloud</div>
+                            <div class="badge badge-warning">Basic Apex</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="card">
+                        <h3 class="heading-3 text-primary">Salesforce Administrator Certification</h3>
+                        <p style="color: var(--gray-600); margin-bottom: 1rem; font-weight: 500;">December 2022 | Foundation Phase</p>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                            Achieved Salesforce Administrator certification and began focusing on platform configuration, user management, and basic automation setup.
+                        </p>
+                        
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                            <div class="badge badge-primary">Admin Certification</div>
+                            <div class="badge badge-secondary">Configuration</div>
+                            <div class="badge badge-warning">User Management</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="card">
+                        <h3 class="heading-3 text-primary">Salesforce Learning Journey Started</h3>
+                        <p style="color: var(--gray-600); margin-bottom: 1rem; font-weight: 500;">June 2022 | Beginning</p>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                            Started learning Salesforce through Trailhead modules, online courses, and hands-on practice. Discovered passion for CRM development and business automation.
+                        </p>
+                        
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                            <div class="badge badge-primary">Trailhead</div>
+                            <div class="badge badge-secondary">Self Learning</div>
+                            <div class="badge badge-warning">CRM Basics</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section section-light">
+        <div class="container">
+            <h2 class="heading-2">Education & Certifications</h2>
+            <div class="grid grid-2">
+                <div class="card fade-in">
+                    <h3 class="heading-3 text-primary">Education</h3>
+                    <div class="flex items-center gap-4 mt-4">
+                        <div class="icon icon-primary">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div>
+                            <h4 style="font-weight: 600; margin-bottom: 0.5rem;">Bachelor's in Computer Science</h4>
+                            <p class="text-secondary">University of Technology • 2018-2022</p>
+                            <div class="badge badge-secondary mt-2">Computer Science</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card fade-in">
+                    <h3 class="heading-3 text-primary">Salesforce Certifications</h3>
+                    <div style="margin-top: 1.5rem;">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600;">Salesforce Administrator</div>
+                                <div style="font-size: 0.875rem; color: var(--text-secondary);">Certified - Dec 2022</div>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon" style="background: var(--warning);">
+                                <i class="fas fa-hourglass-half"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600;">Platform Developer I</div>
+                                <div style="font-size: 0.875rem; color: var(--text-secondary);">Currently Preparing</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learning Achievements -->
+            <div class="grid grid-3 mt-6">
+                <div class="card card-feature">
+                    <div class="icon icon-primary" style="margin: 0 auto;">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3 class="heading-4">Trailhead Points</h3>
+                    <div class="widget-value">55,000+</div>
+                    <p class="text-secondary">Learning modules completed</p>
+                </div>
+                <div class="card card-feature">
+                    <div class="icon icon-accent" style="margin: 0 auto;">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3 class="heading-4">Badges Earned</h3>
+                    <div class="widget-value">47+</div>
+                    <p class="text-secondary">Skill validations</p>
+                </div>
+                <div class="card card-feature">
+                    <div class="icon icon-warning" style="margin: 0 auto;">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="heading-4">Superbadges</h3>
+                    <div class="widget-value">4</div>
+                    <p class="text-secondary">Complex challenges completed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section section-light bg-pattern">
+        <div class="container">
+            <h2 class="heading-2">Let's Connect</h2>
+            <div class="grid grid-2">
+                <div class="slide-in-left">
+                    <h3 class="heading-3 text-primary">Get In Touch</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.8;">
+                        I'm always eager to learn and take on new challenges in Salesforce development. Whether you have entry-level opportunities or want to discuss Sales Cloud and Marketing Cloud, I'd love to connect.
+                    </p>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4 style="font-weight: 600; margin-bottom: 0.25rem;">Email</h4>
+                            <p class="text-secondary">faheemrazaofficial@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon" style="background: var(--indigo);">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div>
+                            <h4 style="font-weight: 600; margin-bottom: 0.25rem;">LinkedIn</h4>
+                            <a href="https://www.linkedin.com/in/muhammad-faheem-751220211/" target="_blank" class="text-secondary" style="text-decoration: none;">
+                                /muhammad-faheem-751220211
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon" style="background: var(--accent);">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4 style="font-weight: 600; margin-bottom: 0.25rem;">Location</h4>
+                            <p class="text-secondary">Available for Remote Work</p>
+                        </div>
+                    </div>
+
+                    <!-- Response Time Widget -->
+                    <div class="widget mt-4">
+                        <div class="widget-header">
+                            <span class="widget-title">Response Time</span>
+                            <i class="fas fa-clock" style="color: var(--success);"></i>
+                        </div>
+                        <div class="widget-value" style="color: var(--success);">24h</div>
+                        <div style="color: var(--text-secondary); font-size: 0.9rem;">Average reply time</div>
+                    </div>
+                </div>
+
+                <div class="slide-in-right">
+                    <form class="card" onsubmit="handleFormSubmit(event)">
+                        <h3 class="heading-3 text-center mb-4">Send a Message</h3>
+                        <div class="form-group">
+                            <label class="form-label">Name</label>
+                            <input type="text" class="form-input" placeholder="Your name..." required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-input" placeholder="your.email@domain.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Subject</label>
+                            <input type="text" class="form-input" placeholder="What would you like to discuss?" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Message</label>
+                            <textarea class="form-input" rows="4" placeholder="Tell me about your opportunity or project..." required style="resize: vertical;"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-gradient" style="width: 100%;">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <section class="section section-dark">
+        <div class="container text-center">
+            <div class="card card-dark fade-in" style="max-width: 600px; margin: 0 auto;">
+                <h3 class="heading-3 text-white mb-4">
+                    Thank you for visiting my portfolio!
+                </h3>
+                <p style="color: var(--gray-300); margin-bottom: 2rem;">
+                    I'm excited about growing my career in Salesforce development and would love to connect with mentors, peers, and potential employers in the Salesforce ecosystem.
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="https://www.linkedin.com/in/muhammad-faheem-751220211" target="_blank" class="btn btn-gradient">
+                        <i class="fab fa-linkedin"></i>
+                        Connect on LinkedIn
+                    </a>
+                    <a href="#hero" class="btn btn-outline" style="color: var(--white); border-color: var(--white);">
+                        <i class="fas fa-arrow-up"></i>
+                        Back to Top
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Navigation functionality
+        const sections = ['hero', 'about', 'skills', 'projects', 'marketing-cloud', 'testimonials', 'experience', 'education', 'contact'];
+        const navDots = document.querySelectorAll('.nav-dot');
+        let activeSection = 0;
+
+        function updateActiveNav() {
+            const scrollPosition = window.scrollY + window.innerHeight / 2;
+            
+            sections.forEach((sectionId, index) => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    const sectionTop = section.offsetTop;
+                    const sectionBottom = sectionTop + section.offsetHeight;
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                        if (activeSection !== index) {
+                            navDots[activeSection]?.classList.remove('active');
+                            navDots[index]?.classList.add('active');
+                            activeSection = index;
+                        }
+                    }
+                }
+            });
+        }
+
+        function scrollToSection(sectionId) {
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        window.addEventListener('scroll', updateActiveNav);
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Charts initialization
+        function initializeCharts() {
+            // Learning Progress Chart
+            const learningCtx = document.getElementById('learningChart');
+            if (learningCtx) {
+                new Chart(learningCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Started', '6 months', '12 months', '18 months', 'Current'],
+                        datasets: [{
+                            label: 'Learning Progress',
+                            data: [10, 30, 50, 65, 75],
+                            borderColor: '#2563eb',
+                            backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4,
+                            pointBackgroundColor: '#2563eb',
+                            pointBorderColor: '#ffffff',
+                            pointBorderWidth: 2,
+                            pointRadius: 6,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100,
+                                ticks: {
+                                    callback: function(value) {
+                                        return value + '%';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Skills Overview Chart
+            const skillsCtx = document.getElementById('skillsChart');
+            if (skillsCtx) {
+                new Chart(skillsCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Admin Skills', 'Sales Cloud', 'Marketing Cloud', 'Apex (Basic)', 'Lightning Platform'],
+                        datasets: [{
+                            data: [75, 65, 60, 45, 35],
+                            backgroundColor: [
+                                '#2563eb',
+                                '#059669',
+                                '#f59e0b',
+                                '#64748b',
+                                '#7c3aed'
+                            ],
+                            borderWidth: 2,
+                            borderColor: '#ffffff'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    padding: 20,
+                                    usePointStyle: true
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        // Progress bar animation
+        function animateProgressBars() {
+            const progressBars = document.querySelectorAll('.progress-bar');
+            progressBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+        }
+
+        // Form submit handler
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+            const originalContent = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('Thank you for your message! I will get back to you soon.');
+                event.target.reset();
+                submitBtn.innerHTML = originalContent;
+                submitBtn.disabled = false;
+            }, 2000);
+        }
+
+        // Initialize everything when page loads
+        window.addEventListener('load', () => {
+            setTimeout(initializeCharts, 500);
+            setTimeout(animateProgressBars, 1000);
+        });
+
+        // Responsive handling
+        function handleResize() {
+            const isTablet = window.innerWidth <= 1024;
+            const isMobile = window.innerWidth <= 768;
+            
+            document.querySelectorAll('.grid-2, .grid-3, .grid-4').forEach(el => {
+                if (isMobile) {
+                    el.style.gridTemplateColumns = '1fr';
+                } else if (isTablet && (el.classList.contains('grid-3') || el.classList.contains('grid-4'))) {
+                    el.style.gridTemplateColumns = 'repeat(2, 1fr)';
+                } else if (el.classList.contains('grid-2')) {
+                    el.style.gridTemplateColumns = 'repeat(2, 1fr)';
+                } else if (el.classList.contains('grid-3')) {
+                    el.style.gridTemplateColumns = 'repeat(3, 1fr)';
+                } else if (el.classList.contains('grid-4')) {
+                    el.style.gridTemplateColumns = 'repeat(4, 1fr)';
+                }
+            });
+        }
+
+        window.addEventListener('resize', handleResize);
+        handleResize(); // Initial call
+
+        // Smooth scrolling for all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
